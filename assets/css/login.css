@@ -1,0 +1,143 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 1000px;
+}
+
+
+.header-nav .main-menu li {
+    list-style: none;
+    margin: 0 15px;
+    padding: 15px 0;
+    display: inline-block;
+    position: relative;
+    z-index: 14;
+}
+
+main {
+    margin: 120px 0;
+}
+
+main .container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.form-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 512px;
+    height: 420px;
+    background-color: #fff;
+    border: 1px solid rgb(12, 84, 17);
+    border-radius: 10px;
+    z-index: 1;
+    overflow: hidden;
+
+}
+
+.login-container {
+    position: absolute;
+    left:4px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+    padding: 5px 20px;
+}
+
+.login-container .top {
+    margin: -50px 0 60px;
+}
+
+.register-container {
+    position: absolute;
+    right:-520px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+    padding: 5px 20px;
+}
+
+.top h4 {
+    text-align: center;
+    font-size: 40px;
+}
+
+
+.top span a{
+    text-decoration: none;
+    font-style: italic;
+    color: #000;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+
+.two-forms .name{
+    display: flex;
+    gap: 10px;
+
+}
+
+.input-field{
+    font-size: 15px;
+    /* background: rgba(255, 255, 255, 0.2);
+    color: #fff; */
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: none;
+    border: #000 1px solid;
+    border-radius: 30px;
+    outline: none;
+    transition: .2s ease;
+}
+
+.input-box i{
+    position: relative;
+    top: -35px;
+    left: 17px;
+    color: #fff;
+}
+
+
+
+.submit{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    outline: none;
+    background: rgba(8, 143, 53, 0.7);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.two-col {
+    display: flex;
+    justify-content: space-between;
+    margin:0 15px 10px;
+}
+
+.two-col .link a {
+    text-decoration: none;
+}
+

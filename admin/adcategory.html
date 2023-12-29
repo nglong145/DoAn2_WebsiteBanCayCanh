@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Danh Mục</title>
+    <link rel="stylesheet" href="/admin/assets/css/admain.css">
+    <script src="/javascript/clickswitch.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/7a3d8c217d.js"></script>
+</head>
+<body>
+    <header>
+        <a href="javascript:void(0)" class="icon" onclick="openmenu()">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <div class="box-user">
+            Xin chào, <span id="name">Admin</span> <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+            <div class="box-login" id="box-login">
+                <button onclick="TTTaiKhoan()"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Tài khoản</button>
+                <button onclick="LogOut();"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Đăng xuất</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container row">
+            <div class="col-1 col-s-12 sidenav ">
+                <button onclick="TongQuan()"> Tổng Quan</button>
+                <button class="active" onclick="DanhMuc()"> Danh Mục</button>
+                <button onclick="SanPham()">Sản Phẩm</button>
+                <button onclick="HoaDonBan()"> Hóa Đơn Bán</button>                                                                                      
+            </div>
+
+            <div class="sidenav-left" id="button-sidenav-left">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeBTN()"><i
+                        class="far fa-window-close"></i></a>
+                <ul>
+                    <li onclick="TongQuan()"> Tổng quan</li>
+                    <li onclick="DanhMuc()">Loại sản phẩm</li>
+                    <li onclick="SanPham()"> Sản phẩm</li>
+                    <li onclick="HoaDonBan()"> Hóa đơn bán</li>
+                </ul>
+            </div>
+            
+            <div class="col-11 content ">
+                <div class="col-4 main-input ">
+                    <div class="tab-input" >
+                        <div class="title">
+                            <p>Nhập thông tin danh mục</p>
+                            <hr>
+                        </div>
+        
+                        <div class="input-box row">
+                            <form>
+                                <div class="col-12 text">
+                                    <label for="txtright">Mã danh mục:</label>
+                                </div>
+                                <div class="col-12 text-box">
+                                    <input type="text" id="madanhmuc"
+                                    placeholder="Nhập mã danh mục">
+                                </div>
+        
+                                <div class="col-12 text">
+                                    <label for="txtright">Tên danh mục:</label>
+                                </div>
+                                <div class="col-12 text-box">
+                                    <input type="text" id="tendanhmuc"
+                                    placeholder="Nhập tên danh mục">
+                                </div>
+                            </form>
+                            <hr>
+                            <button class="button-form" style="background-color: rgba(44, 140, 15, 0.8);"
+                                    onclick="ThemDanhMuc()">Thêm Danh Mục</button>
+                                <button class="button-form" style="background-color: rgba(227, 32, 21, 0.8);"
+                                    onclick="NhapMoi()">Nhập mới</button>
+                                <button class="button-form" style="background-color: rgba(14, 87, 224, 0.8);" id="buttonUpdate"
+                                    onclick="CapNhat()">Cập nhật thông tin</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-8 main-list">
+                    <div class="tab-list">
+                        <div class="title">
+                            <p>Danh sách danh mục</p>
+                            <hr>
+                        </div>
+        
+                        <div class="searchbar row">
+                            <div class="col-10 searchbox">
+                                <input type="text" id="search-category" placeholder="Nhập mã, tên danh mục sản phẩm...">
+                            </div>
+                            <div class="col-2 searchbutton">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+            
+                        <div class="list row">
+                            <div class="col-12 list-category">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <!-- <th style="padding-top: 10px;"><input type="checkbox"
+                                                    onclick="CheckAll(this)"></th> -->
+                                            <th>Mã danh mục sản phẩm</th>
+                                            <th>Tên danh mục sản phẩm</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listCategory">
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-12 box-result">
+                                <div class="box-sum">
+                                    <div class="box-left">
+                                        Số lượng loại sản phẩm: <span id="soluong">0</span>
+                                    </div>
+                                    <div class="box-right">
+                                        <button><i class="fas fa-angle-left"></i></button>
+                                        <button>1</button>
+                                        <button>2</button>
+                                        <button>3</button>
+                                        <button>4</button>
+                                        <button><i class="fas fa-angle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="/admin/javascript/adcate.js"></script>
+</body>
+</html>

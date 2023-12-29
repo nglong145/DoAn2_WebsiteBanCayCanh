@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <link rel="stylesheet" href="/admin/assets/css/admain.css">
+    <script src="/javascript/clickswitch.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/7a3d8c217d.js"></script>
+
+</head>
+<body>
+    <header>
+        <a href="javascript:void(0)" class="icon" onclick="openmenu()">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <div class="box-user">
+            Xin chào, <span id="name">Admin</span> <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+            <div class="box-login" id="box-login">
+                <button onclick="TTTaiKhoan()"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Tài khoản</button>
+                <button onclick="LogOut();"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Đăng xuất</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container row">
+            <div class="col-1 col-s-12 sidenav ">
+                <button onclick="TongQuan()"> Tổng Quan</button>
+                <button onclick="DanhMuc()"> Danh Mục</button>
+                <button class="active" onclick="SanPham()">Sản Phẩm</button>
+                <button onclick="HoaDonBan()"> Hóa Đơn Bán</button>                                                                                      
+            </div>
+
+            <div class="sidenav-left" id="button-sidenav-left">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeBTN()"><i
+                        class="far fa-window-close"></i></a>
+                <ul>
+                    <li onclick="TongQuan()"> Tổng quan</li>
+                    <li onclick="DanhMuc()">Loại sản phẩm</li>
+                    <li onclick="SanPham()"> Sản phẩm</li>
+                    <li onclick="HoaDonBan()"> Hóa đơn bán</li>
+                </ul>
+            </div>
+            
+            <div class="col-11 content ">
+                <div class="col-4 main-input ">
+                    <div class="tab-input" >
+                        <div class="title">
+                            <p>Nhập thông tin sản phẩm</p>
+                            <hr>
+                        </div>
+        
+                        <div class="input-box row">
+                            <form>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Danh mục sản phẩm:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <select name="danhmucsp" id="danhmucsp">
+                                        <option value="choose">--Chọn loại danh mục sản phẩm--</option>
+                                        <option value="Cây Dây Leo">Cây Dây Leo</option>
+                                        <option value="Cây Ban Công">Cây Ban Công</option>
+                                        <option value="Cây Văn Phòng">Cây Văn Phòng</option>
+                                        <option value="Cây Để Bàn">Cây Để Bàn</option>
+                                        <option value="Cây Nội Thất">Cây Nội Thất</option>
+                                        <option value="Cây Phong Thủy">Cây Phong Thủy</option>
+                                        <option value="Cây Thủy Sinh">Cây Thủy Sinh</option>
+                                        <option value="Cây Ngoại Thất">Cây Ngoại Thất</option>
+                                        <option value="Hoa">Hoa</option>
+                                        <option value="Cây Công Trình">Cây Công Trình</option>
+                                        <option value="Chậu Gốm Sứ">Chậu Gốm Sứ</option>
+                                        <option value="Bình Thủy Tin">Bình Thủy Tinh</option>
+                                        <option value="Chậu Nhựa">Chậu Nhựa</option>
+                                        <option value="Chậu Composite">Chậu Composite</option>
+                                        <option value="Tượng Phong Thủy">Tượng Phong Thủy</option>
+                                        <option value="Vật Tư Ngành Cây">Vật Tư Ngành Cây</option>
+                                        <option value="Con Người">Con Người</option>
+                                        <option value="Kiến Trúc">Kiến Trúc</option>
+                                        <option value="Động Vật">Động Vật</option>
+                                        <option value="Các Loại Khác">Các Loại Khác</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Mã sản phẩm:</label>
+                                </div>
+
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="text" id="masanpham"
+                                        placeholder="Nhập mã sản phẩm...Tự động sinh nếu không nhập...">
+                                </div>
+
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Tên sản phẩm:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="text" id="tensanpham" placeholder="Nhập tên sản phẩm...">
+                                </div>
+
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Hình ảnh:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="file" id="imgproduct" onchange="loadFile(event)">
+                                    <center>
+                                        <span style="float: left;">View:</span>
+                                        <img id="viewimg" style="max-width:180px;max-height:180px;margin-top: 10px;">
+                                    </center>
+                                </div>
+
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Giá bán:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="number" id="giaban" placeholder="Nhập giá bán...">
+                                </div>
+                            </form>
+                            <hr>
+                            <button class="button-form" style="background-color: rgba(44, 140, 15, 0.8);"
+                                onclick="ThemSanPham()">Thêm sản phẩm</button>
+                            <button class="button-form" style="background-color: rgba(227, 32, 21, 0.8);"
+                                onclick="Reset()">Nhập mới</button>
+                            <button class="button-form" style="background-color: rgba(14, 87, 224, 0.8);" id="buttonUpdate"
+                                onclick="CapNhat()">Cập nhật thông tin</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-8 main-list">
+                    <div class="tab-list">
+                        <div class="title">
+                            <p>Danh sách sản phẩm</p>
+                            <hr>
+                        </div>
+        
+                        <div class="searchbar row">
+                            <div class="col-10 searchbox">
+                                <input type="text" id="search-category" placeholder="Nhập mã, tên sản phẩm...">
+                            </div>
+                            <div class="col-2 searchbutton">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+            
+                        <div class="list row">
+                            <div class="col-12 list-product">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Hình ảnh</th>
+                                            <th>Danh mục</th>
+                                            <th>Giá bán</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listProduct">
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-12 box-result">
+                                <div class="box-sum">
+                                    <div class="box-left">
+                                        Số lượng sản phẩm: <span id="soluong">0</span>
+                                    </div>
+                                    <div class="box-right">
+                                        <button><i class="fas fa-angle-left"></i></button>
+                                        <button>1</button>
+                                        <button>2</button>
+                                        <button>3</button>
+                                        <button>4</button>
+                                        <button><i class="fas fa-angle-right"></i></button>
+
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script src="/javascript/sanpham/product.js"></script>
+
+    
+</body>
+</html>

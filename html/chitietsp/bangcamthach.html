@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/header&footer.css">
+    <link rel="stylesheet" href="/assets/css/productdetail.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7a3d8c217d.js"></script>
+    <script src="/javascript/sanpham/product.js"></script>
+    <script src="/javascript/menu.js"></script>
+    <script src="/javascript/sidenav-dropdownmenu.js"></script>
+</head>
+<body onload="LoadDetailProduct()">
+    <header>
+        <div class="container">
+            <div class="header-task">
+                <div class="header-task-left">
+                    <div class="logo">
+                        <a href="/html/main.html"><img src="/assets/image/LOGO-Web.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="header-task-center">
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm" name="q">
+                        <div class="btn-search" ><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></div>
+                    </form>
+                </div>
+                <div class="header-task-right">
+                    <div class="login">
+                        <a href="/html/login.html">
+                            <i class="fa-solid fa-user" style="color: #000000;"></i>
+                            <h5>Tài khoản</h5>
+                        </a>  
+                    </div>  
+                    <div class="cart">
+                        <a href="/html/cart.html">
+                            <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
+                            <h5>Giỏ hàng</h5>
+                        </a>
+                        <span id="TotalProduct">0</span>
+                    </div>  
+                </div>
+            </div>
+
+            <div class="header-nav">
+                <ul class="main-menu">
+                    <li><a href="main.html">Trang Chủ </a></li>
+                    <li><a href="trees.html">Cây Cảnh 
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1">
+                            <li><a href="/html/officetrees.html">Cây Văn Phòng</a></li>
+                            <li><a href="">Cây Để Bàn</a></li>
+                            <li><a href="">Cây Phong Thủy</a></li>
+                            <li><a href="">Cây Nội Thất</a></li>
+                            <li><a href="">Xương Rồng</a></li>
+                            <li><a href="">Sen Đá</a></li>
+                            <li><a href="">Cây Thủy Sinh</a></li>
+                            <li><a href="">Cây Ngoại Thất</a></li>
+                            <li><a href="">Cây Ban Công</a></li>
+                            <li><a href="">Cây Dây Leo</a></li>
+                            <li><a href="">Hoa</a></li>
+                            <li><a href="">Cây Công Trình</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Chậu Trồng Cây
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1">
+                            <li><a href="">Chậu Gốm Sứ</a></li>
+                            <li><a href="">Chậu Nhựa</a></li>
+                            <li><a href="">Bình Thủy Tinh</a></li>
+                            <li><a href="">Chậu Composite</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Phụ Kiện Tiểu Cảnh
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1">
+                            <li><a href="">Tượng Phong Thủy</a></li>
+                            <li><a href="">Con Người</a></li>
+                            <li><a href="">Kiến Trúc</a></li>
+                            <li><a href="">Động Vật</a></li>
+                            <li><a href="">Các Loại Khác</a></li>
+                            <li><a href="">Vật Tư Ngành Cây</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="knowledge.html">Kiến Thức Cây Cảnh
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1">
+                            <li><a href="">Chăm Sóc Cây Cảnh</a></li>
+                            <li><a href="">Nội Thất - Sân Vườn</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Quà Tặng Cây Xanh</a></li>
+                    <li><a href="">Phong Thủy
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1">
+                            <li><a href="">Cây Hợp Mệnh</a></li>
+                            <li><a href="">Cây Hợp Tuổi</a></li>
+                            <li><a href="">Cây Hợp Cung Hoàng Đạo</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Dịch Vụ
+                        <i class="fa-solid fa-chevron-down" style="color: rgba(255, 255, 255, 0.7);"></i>
+                        </a>
+                        <ul class="sub-menu1 last-submenu">
+                            <li><a href="">Cho Thuê Cây Xanh</a></li>
+                            <li><a href="">Thay Chậu Và Đất Trồng</a></li>
+                            <li><a href="">Thi Công Tiểu Cảnh Sân Vườn</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="nav-button">
+                    <div class="nav" onclick="OpenSidenav()">
+                        <i class="fa-solid fa-bars" style="color: #ffffff;"></i>             
+                    </div>
+
+                    <div class="search" onclick="OpenSearchbox()">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                    </div>
+
+                    <div class="user">
+                        <a href="login.html">
+                            <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                        </a>
+                    </div>
+
+                    <div class="shopping">
+                        <a href="cart.html">
+                            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-box" id="search-box">
+                <div class="container">
+                    <i class="fa-solid fa-xmark" id="search-close" onclick="CloseSearchbox()" style="color: #ffffff;"></i>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm">
+                        <button class="buttonSearch"> <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+                    </div>         
+                </div> 
+            </div>
+
+            <div class="sidenav" id="sidenav" >
+                <a href="" class="closebtn" onclick="CloseNav()"><i class="far fa-window-close"></i></a>
+                <ul class="sidenav-menu">
+                    <li><a href="main.html">Trang Chủ </a></li>
+                    <li>
+                        <a href="trees.html">Cây Cảnh </a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu1" ></i>
+                        <ul class="sub-menu1 sbmenu1">
+                            <li class="dropdown-item"><a href="">Cây Để Bàn</a></li>
+                            <li class="dropdown-item"><a href="/html/officetrees.html">Cây Văn Phòng</a></li>
+                            <li class="dropdown-item"><a href="">Cây Phong Thủy</a></li>
+                            <li class="dropdown-item"><a href="">Cây Nội Thất</a></li>
+                            <li class="dropdown-item"><a href="">Xương Rồng</a></li>
+                            <li class="dropdown-item"><a href="">Sen Đá</a></li>
+                            <li class="dropdown-item"><a href="">Cây Thủy Sinh</a></li>
+                            <li class="dropdown-item"><a href="">Cây Ngoại Thất</a></li>
+                            <li class="dropdown-item"><a href="">Cây Ban Công</a></li>
+                            <li class="dropdown-item"><a href="">Cây Dây Leo</a></li>
+                            <li class="dropdown-item"><a href="">Hoa</a></li>
+                            <li class="dropdown-item"><a href="">Cây Công Trình</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Chậu Trồng Cây</a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu2" ></i>
+                        <ul class="sub-menu1 sbmenu2">
+                            <li class="dropdown-item"><a href="">Chậu Gốm Sứ</a></li>
+                            <li class="dropdown-item"><a href="">Chậu Nhựa</a></li>
+                            <li class="dropdown-item"><a href="">Bình Thủy Tinh</a></li>
+                            <li class="dropdown-item"><a href="">Chậu Composite</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Phụ Kiện Tiểu Cảnh</a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu3"></i>
+                        <ul class="sub-menu1 sbmenu3">
+                            <li class="dropdown-item"><a href="">Tượng Phong Thủy</a></li>
+                            <li class="dropdown-item"><a href="">Con Người</a></li>
+                            <li class="dropdown-item"><a href="">Kiến Trúc</a></li>
+                            <li class="dropdown-item"><a href="">Động Vật</a></li>
+                            <li class="dropdown-item"><a href="">Các Loại Khác</a></li>
+                            <li class="dropdown-item"><a href="">Vật Tư Ngành Cây</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="knowledge.html">Kiến Thức Cây Cảnh</a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu4"></i>
+                        <ul class="sub-menu1 sbmenu4">
+                            <li class="dropdown-item"><a href="">Chăm Sóc Cây Cảnh</a></li>
+                            <li class="dropdown-item"><a href="">Nội Thất - Sân Vườn</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Quà Tặng Cây Xanh</a></li>
+                    <li>
+                        <a href="">Phong Thủy</a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu5"></i>
+                        <ul class="sub-menu1 sbmenu5">
+                            <li class="dropdown-item"><a href="">Cây Hợp Mệnh</a></li>
+                            <li class="dropdown-item"><a href="">Cây Hợp Tuổi</a></li>
+                            <li class="dropdown-item"><a href="">Cây Hợp Cung Hoàng Đạo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Dịch Vụ</a>
+                        <i class="fa-solid fa-chevron-down dropdown-menu6"></i>
+                        <ul class="sub-menu1 sbmenu6">
+                            <li class="dropdown-item"><a href="">Cho Thuê Cây Xanh</a></li>
+                            <li class="dropdown-item"><a href="">Thay Chậu Và Đất Trồng</a></li>
+                            <li class="dropdown-item"><a href="">Thi Công Tiểu Cảnh Sân Vườn</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </header>
+     
+    <main>
+        <div class="container">
+
+            <div class="page-title">
+                <div class="path">
+                    <p>
+                        <a href="main.html">Trang chủ  </a> 
+                        <span>/</span> 
+                        <a href="product.html">Sản phẩm </a> 
+                        <span>/</span>
+                        <a href="trees.html">Cây cảnh </a>
+                        <span>/</span> 
+                        <a href="trees.html">Cây văn phòng </a>
+                    </p>
+                </div>
+
+                <div class="button">
+                    <a href="">
+                        <button>
+                            <i class="fa-solid fa-chevron-left" ></i>
+                        </button>
+                    </a>
+                    
+                    <a href="">
+                        <button>
+                            <i class="fa-solid fa-chevron-right" ></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="main">
+                    <div class="product-info">
+                        <div class="product-info-image">
+                            <div class="product-image-slide">
+                                <img src="/assets/image/cayvanphong/bang-cam-thach-2.jpg" alt="">
+                            </div>
+                            <div class="product-image-slide">
+                                <img src="/assets/image/cayvanphong/cay-bang-cam-thach-1.jpg" alt="">
+                            </div>
+                            <div class="product-image-slide">
+                                <img src="/assets/image/cayvanphong/cay-sao-sang-de-ban-2.jpg" alt="">
+                            </div>
+                            <div class="product-image-slide">
+                                <img src="/assets/image/cayvanphong/cay-thinh-vuong-de-ban-2.jpg" alt="">
+                            </div>  
+                           
+                            <div class="prev" onclick="plusslide(-1)">
+                                <i class="fa-solid fa-chevron-left" ></i>
+                            </div>
+                            <div class="next" onclick="plusslide(1)">
+                                <i class="fa-solid fa-chevron-right" ></i>
+                            </div>
+
+                            <div class="sub-product-slide">
+                                <div class="slide-image">
+                                    <img src="/assets/image/cayvanphong/bang-cam-thach-2.jpg" alt="" class="demo-cursor" onclick="currentslide(1)">
+                                </div>
+
+                                <div class="slide-image">
+                                    <img src="/assets/image/cayvanphong/cay-bang-cam-thach-1.jpg" alt="" class="demo-cursor" onclick="currentslide(2)">
+                                </div>
+
+                                <div class="slide-image">
+                                    <img src="/assets/image/cayvanphong/cay-sao-sang-de-ban-2.jpg" alt="" class="demo-cursor" onclick="currentslide(3)">
+                                </div>
+
+                                <div class="slide-image">
+                                    <img src="/assets/image/cayvanphong/cay-thinh-vuong-de-ban-2.jpg" alt="" class="demo-cursor" onclick="currentslide(4)">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="product-info-detail" id="product-info-detail">
+                            <!-- <div class="product-name">
+                                <h3>Cây Bàng cẩm Thạch</h3>
+                            </div>
+                            <hr>
+                            <div class="product-description-demo">
+                                <p>Cây bàng cẩm thạch, còn được gọi là cây cẩm thạch, 
+                                    là một loại cây cảnh quý hiếm với vẻ ngoại hình độc đáo và sự thanh lịch.
+                                    Với tên gọi khoa học là Ficus elastica, cây bàng cẩm thạch thuộc họ Moraceae
+                                    và là một trong những loại cây nội thất phổ biến được ưa 
+                                    chuộng trong việc trang trí không gian sống.</p>
+                            </div>
+                            <div class="product-price">
+                                <h4>Giá chỉ từ:<span>400.000₫</span></h4>
+                            </div>
+                            <div class="product-operation">
+                                <div class="count">
+                                    <button onClick="Minus()" class="minus">-</button>
+                                    <input id="amount" value="0" min="0">  
+                                    <button onClick="Plus()" class="plus">+</button>
+                                </div>
+                                <div class="addtocart" onclick="AddToCartAmount(id)">
+                                    Mua ngay
+                                </div>
+                            </div> -->
+                        
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <div class="description-top">
+                            <hr>
+                            <p class="title">Mô tả</p>
+                        </div>
+                        <div class="description-content">
+                            <h3>Cây Bàng cẩm thạch</h3>
+                            <p>Cây Bàng cẩm thạch có tên gọi khác là: cây bàng nhật, cây bàng lá nhỏ, cây bàng đài loan cẩm thạch</p>
+                            <p> <span class="word">Tên khoa học:</span> Bucida sp.variegata</p>
+                            <p><span class="word">Họ:</span> combretaceae (bàng)</p>
+                            <div class="picture">
+                                <img src="/assets/image/caybang/bang-cam-thach.jpg" alt=""
+                                style="width: 350px; height: 500px">
+                                <div class="caption" style="width: 350px">Bàng cẩm thạch</div>
+                            </div>
+                            <p>Cây bàng cẩm thạch có nguồn gốc từ Mexico, Trung Mỹ, Caribbean và Bắc Nam Mỹ.</p>
+
+                            <h3>Đặc điểm của cây bàng Nhật</h3>
+                            <p>– Về đặc điểm cấu trúc cây bàng cẩm thạch này giống hoàn toàn cây bàng đài loan, điểm phân biệt duy nhất là màu sắc của lá. Lá cây bàng đài loan thường xanh không lẫn màu khác. Còn lá của cây bàng nhật màu cẩm thạch, ở giữa màu xanh bóng, viền mép màu trắng kem.</p>
+                            <div class="picture">
+                                <img src="/assets/image/caybang/bang-dai-loan-cam-thach.jpg" alt=""
+                                style="width: 500px; height: 500px">
+                                <div class="caption" style="width: 500px;">Bàng đài loan cẩm thạch</div>
+                            </div>
+                            <p>– Bàng đài loan cẩm thạch là cây thân gỗ sống lâu năm, giống cây chủ yếu được ghép. Cây cao hết mức sẽ đạt được chiều cao từ 10m-15m. Phân nhiều cành nhánh, nhánh thường mọc ngang tạo độ che phủ rất rộng, thích hợp trồng tạo bóng mát. Tán lá xòe đều xung quanh tạo thành một vòng tròng, Nhánh không mọc khắp nơi mà chúng mọc theo từng đoạn tạo thành nhiều tầng lớp.</p>
+                            <p>– Lá hình bầu dục chung cuống, nhiều lá xếp thành hoa thị, kích thước từ 1cm-2cm, rộng khoảng 0,5cm-1cm. Lá xanh bóng, vành nguyên không lông lá rụng theo mùa. Cây có hoa và quả</p>
+
+                            <h3>Ứng dụng của cây Bàng Nhật cẩm thạch</h3>
+                            <p>Cây bàng cẩm thạch khi còn nhỏ hoặc trồng chậu, cây có tán lá đầy tính trang trí, tương đối gọn gàng, sẽ là tuyệt vời để trang trí xung quanh nhà và sân vườn.</p>
+                            <div class="picture">
+                                <img src="/assets/image/caybang/bang-la-nho.jpg" alt=""
+                                style="width: 500px; height: 500px">
+                                <div class="caption" style="width: 500px;">Bàng lá nhỏ</div>
+                            </div>
+                            <p>Bàng đài loan cẩm thạch phù hợp hơn khi trồng trong sân vườn, vừa làm cảnh tạo điểm nhấn vừa cho bóng mát trong sân, hoặc trồng vào chậu bày trí trước nhà, phòng khách, sân thượng…</p>
+
+                            <h3>Cách chăm sóc bàng Đài Loan cẩm thạch</h3>
+                            <p>Bàng Đài Loan là loại cây dễ chăm sóc, không tốn quá nhiều thời gian, công sức:</p>
+                            <div class="picture">
+                                <img src="/assets/image/caybang/cay-bang-cam-thach.jpg" alt=""
+                                style="width: 500px; height: 404px">
+                                <div class="caption" style="width: 500px;">Cây bàng cẩm thạch</div>
+                            </div>
+                            <p><span class="word">Ánh sáng:</span> Cây ưa sáng hoàn toàn, càng nhiều nắng lá càng đậm màu và cây phát triển nhanh hơn.</p>
+                            <p><span class="word">Nhiệt độ:</span> Cây chịu được biên độ nhiệt lớn, chịu nóng và lạnh tốt, phù hợp với nhiệt độ ở Việt Nam.</p>
+                            <p><span class="word">Độ ẩm:</span> Cây ưa ẩm trung bình.</p>
+                            <div class="picture">
+                                <img src="/assets/image/caybang/cay-bang-nhat-la-nho.jpg" alt=""
+                                style="width: 500px; height: 268px">
+                                <div class="caption" style="width: 500px;">Cây bàng cẩm thạch lá nhỏ</div>
+                            </div>
+                            <p><span class="word">Đất trồng:</span> Cây sống tốt ở hầu hết mọi loại đất. Sống tốt nhất ở đất tơi xốp, nhiều mùn, dinh dưỡng.</p>
+                            <p><span class="word">Nước:</span> Nhu cầu nước vừa phải. Bàng Đài Loan chịu hạn tốt. Tưới nước khoảng 2-4 ngày/lần, mỗi lần khoảng 3-4 lít nước.</p>
+                        </div>
+                        <div class="description-bottom ">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="product-similar">
+                        <h3>SẢN PHẨM TƯƠNG TỰ</h3>
+                        <div class="list-product-similar">
+                            <div class="product-similar-slider">
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/truc-phat-loc-thuy-sinh-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/van-loc-hong-hop-nguoi-tuoi-ty-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/cay-cuc-tan-an-do-300x300.jpg.webp" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/do-quyen-247x247.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/truc-phat-loc-thuy-sinh-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/van-loc-hong-hop-nguoi-tuoi-ty-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/cay-cuc-tan-an-do-300x300.jpg.webp" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/do-quyen-247x247.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/truc-phat-loc-thuy-sinh-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/van-loc-hong-hop-nguoi-tuoi-ty-510x510.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/cay-cuc-tan-an-do-300x300.jpg.webp" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                <div class="product">
+                                    <div class="product-image">
+                                        <img src="/assets/image/caycanh/do-quyen-247x247.jpg" alt="">
+                                    </div>
+                                    <div class="product-similar-info">  
+                                        <p class="similar-cate">CÂY CẢNH</p>
+                                        <p class="similar-na">Cau Nhật</p>
+                                        <p class="similar-pri">Giá chỉ từ: <span>400.000₫</span></p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+
+                            <div class="button-prev" onclick="sliderprev()">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </div>
+
+                            <div class="button-next" onclick="slidernext()">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+        
+                <div class="sidebar-left">
+                    <div class="content-category">
+                        <h3>Danh mục sản phẩm</h3>
+                        <hr>
+                        <div class="list-category">
+                            <div class="category-wrap-menu">
+    
+                                <a href="">Cây Cảnh </a>
+                                
+                                <i class="fa-solid fa-chevron-up dropdown-menu1" ></i>
+                                <div class="sub-category">
+                                    <div class="line"></div>
+                                    <ul class="category1">
+                                        <li class="dropdown-item"><a href="">Cây Dây Leo</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Ban Công</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Văn Phòng</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Để Bàn</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Phong Thủy</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Nội Thất</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Thủy Sinh</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Ngoại Thất</a></li>
+                                        <li class="dropdown-item"><a href="">Hoa</a></li>
+                                        <li class="dropdown-item"><a href="">Cây Công Trình</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                            <div class="category-wrap">
+                                <a href="">Sen Đá</a>
+                            </div>
+                            <div class="category-wrap">
+                                <a href="">Xương Rồng</a>
+                            </div>
+                            <div class="category-wrap-menu">
+                                <a href="">Chậu Trồng Cây </a>
+                                <i class="fa-solid fa-chevron-down dropdown-menu2"></i>
+                                <div class="sub-category">
+                                    <div class="line"></div>
+                                    <ul class="category2">
+                                        <li class="dropdown-item"><a href="">Bình Thủy Tinh</a></li>
+                                        <li class="dropdown-item"><a href="">Chậu Gốm Sứ</a></li>
+                                        <li class="dropdown-item"><a href="">Chậu Nhựa</a></li>
+                                        <li class="dropdown-item"><a href="">Chậu Composite</a></li>
+                                    </ul>
+                                </div>  
+                            </div>
+                            <div class="category-wrap-menu">
+                                <a href="">Phụ Kiện Tiểu Cảnh </a>
+                                <i class="fa-solid fa-chevron-down dropdown-menu3"></i>
+                                <div class="sub-category">
+                                    <div class="line"></div>
+                                    <ul class="category3">
+                                        <li class="dropdown-item"><a href="">Tượng Phong Thủy</a></li>
+                                        <li class="dropdown-item"><a href="">Con Người</a></li>
+                                        <li class="dropdown-item"><a href="">Kiến Trúc</a></li>
+                                        <li class="dropdown-item"><a href="">Động Vật</a></li>
+                                        <li class="dropdown-item"><a href="">Các Loại Khác</a></li>
+                                    </ul>
+                                </div>                          
+                            </div>
+    
+                            <div class="category-wrap">
+                                <a href="">Vật Tư Nghành Cây</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="list-product-wrap">
+                        <h5>SẢN PHẨM</h5>
+                        <hr>
+                        <div class="list-product">
+                            <div class="product">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Cây Hoa Bỏng</p>
+                                        <p class="price" style="color: #4f4f4f;">Giá chỉ từ: <span style="color:#cc0000; font-weight: 700;">50.000₫</span></p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="product">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Cây Hoa Bỏng</p>
+                                        <p class="price" style="color: #4f4f4f;">Giá chỉ từ: <span style="color:#cc0000; font-weight: 700;">50.000₫</span></p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="product">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Cây Hoa Bỏng</p>
+                                        <p class="price" style="color: #4f4f4f;">Giá chỉ từ: <span style="color:#cc0000; font-weight: 700;">50.000₫</span></p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="product">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Cây Hoa Bỏng</p>
+                                        <p class="price" style="color: #4f4f4f;">Giá chỉ từ: <span style="color:#cc0000; font-weight: 700;">50.000₫</span></p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="product">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Cây Hoa Bỏng</p>
+                                        <p class="price" style="color: #4f4f4f;">Giá chỉ từ: <span style="color:#cc0000; font-weight: 700;">50.000₫</span></p>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+    
+                    <div class="list-post-wrap">
+                        <h5>BÀI VIẾT MỚI</h5>
+                        <hr>
+                        <div class="list-post">
+                            <div class="post">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Kiến Thức Cơ Bản Về Phân Bón</p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="post">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Kiến Thức Cơ Bản Về Phân Bón</p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="post">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Kiến Thức Cơ Bản Về Phân Bón</p>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <div class="post">
+                                <a href="">
+                                    <div class="image">
+                                        <img src="/assets/image/kienthuccaycanh/cay-bong-100x100.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p class="name">Kiến Thức Cơ Bản Về Phân Bón</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="intro">
+                <h3>Về chúng tôi</h3>
+                <p> <span>Là một trong số hệ thống cửa hàng của Công ty TNHH MTV Cây cảnh Hà Nội. 
+                    <a href="">Cây cảnh online</a></span> chuyên cung cấp các loại cây văn phòng, cây để bàn, cây phong thủy, cây nội thất, phụ kiện tiểu cảnh, các loại chậu trồng cây, 
+                    cho thuê cây, thi công tiểu cảnh sân vườn....</p>
+                <div class="follow">
+                    <p>Follow Us</p>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #365899;">
+                            <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #4C68D7;">
+                            <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #1DA1F2;">
+                            <i class="fa-brands fa-twitter" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #000000;">
+                            <i class="fa-regular fa-envelope" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #FF0000;">
+                            <i class="fa-brands fa-pinterest" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #0077B5" >
+                            <i class="fa-brands fa-linkedin"  style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                    <a href="" style="text-decoration: none;">
+                        <div class="icon" style="background-color: #CC0000;">
+                            <i class="fa-brands fa-youtube" style="color: #ffffff;"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fanpage">
+                <h3>Fanpage Facebook</h3>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCayCanhOnline.vn%2F%3Fref%3Dembed_page&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <ul>
+                    <li><a href="">Hướng dẫn mua hàng và thanh toán</a></li>
+                    <li><a href="">Chính sách bảo hành và đổi trả</a></li>
+                </ul>
+            </div>
+
+            <div class="inbox">
+                <h3>Liên hệ</h3>
+                <strong>Công ty TNHH MTV Cây cảnh Hà Nội - Chi Nhánh Vạn Phúc</strong> <br>
+
+                    <strong>Địa chỉ: <a href="">C6 Khu đất đấu giá Vạn Phúc, Đường Lê Văn Tám - Cổng chợ cây cảnh  Vạn Phúc, Hà Đông, Hà Nội </a>
+                        (Ngõ 134 Vạn Phúc - ngã tư đầu tiên rẽ phải)
+                    </strong>  <br>
+                    <strong>Hotline:
+                        <a href="">0988004490</a> -  <a href="">0822004490</a>
+                    </strong>   <br>
+                    
+                    <strong>Email:
+                        <a href="">caycanhonline.vn@gmail.com</a>
+                    </strong>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="copyright-img">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=44079740-fb21-42e9-ad53-52e638aac17d&refurl=https://caycanhonline.vn/">
+                    <img src="/assets/image/copyright1.png" alt="">
+                </a>
+                <img src="/assets/image/copyright2.png" alt="">
+            </div>
+            <div class="copyright-text">
+                <p>Copyright 2023 © 
+                    <a href=""><span style="font-weight: 600; color: #000000;">Cây Cảnh Online</span></a>              
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // javascript phan slide anh san pham
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusslide(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentslide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("product-image-slide");
+          let dots = document.getElementsByClassName("demo-cursor");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+            slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          }         
+        }
+
+        // javascript phan drop down menu danh muc san pham
+        $(document).ready(function(){
+            $('.dropdown-select').click(function(){
+                $(".searchresult-wrap .dropdown-select .list-dropdown").toggleClass('show');
+            })
+
+            $('.dropdown-menu1').click(function(){
+                $('.category-wrap-menu .category1 .dropdown-item').toggleClass('show');
+                $('.category-wrap-menu .category1 .dropdown-item').toggleClass('hide');
+                $('.dropdown-menu1').toggleClass('rotate1');
+            });
+
+            $('.dropdown-menu2').click(function(){
+                $('.category-wrap-menu .category2 .dropdown-item').toggleClass('show');
+                $('.dropdown-menu2').toggleClass('rotate');
+            });
+
+            $('.dropdown-menu3').click(function(){
+                $('.category-wrap-menu .category3 .dropdown-item').toggleClass('show');
+                $('.dropdown-menu3').toggleClass('rotate');
+            })
+        })
+
+        //javascript phan slide san pham tuong tu
+        let CurrentIndex=0  ;
+const items=document.querySelector('.product-similar-slider');
+const totalitems =document.querySelectorAll('.product').length;
+
+function slidernext() {
+    if (CurrentIndex < totalitems - 4) {
+        CurrentIndex += 4;
+      } else {
+        CurrentIndex = 0;
+      }
+      updateSlider();
+}
+
+function sliderprev() {
+    if (CurrentIndex > 0) {
+        CurrentIndex -= 4;
+    } else {
+        CurrentIndex = totalitems - 4;
+    }
+    updateSlider();
+  }
+  
+  function updateSlider() {
+    const transformValue = -CurrentIndex * (100 / 4) + '%';
+    items.style.transform = 'translateX(' + transformValue + ')';
+  }
+
+    </script>
+</body>
+</html>

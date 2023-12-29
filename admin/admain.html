@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý cửa hàng</title>
+    <link rel="stylesheet" href="/admin/assets/css/admain.css">
+    <script src="/javascript/clickswitch.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/7a3d8c217d.js"></script>
+</head>
+<body>
+    <header>
+        <a href="javascript:void(0);" class="icon" onclick="openmenu()">
+           <i class="fa-solid fa-bars"></i>
+        </a>
+        <div class="box-user">
+            Xin chào, <span id="name">Admin</span> <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+            <div class="box-login" id="box-login">
+                <button onclick="TTTaiKhoan()"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Tài khoản</button>
+                <button onclick="LogOut();"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Đăng xuất</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container row">
+            <div class="col-1 col-s-12 sidenav">
+                <button class="active" onclick="TongQuan()"> Tổng Quan</button>
+                <button onclick="DanhMuc()"> Danh Mục</button>
+                <button onclick="SanPham()">Sản Phẩm</button>
+                <button onclick="HoaDonBan()"> Hóa Đơn Bán</button>                                                                                      
+            </div>
+        
+            <div class="sidenav-left" id="button-sidenav-left">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeBTN()"><i
+                        class="far fa-window-close"></i></a>
+                <ul>
+                    <li onclick="TongQuan()"> Tổng quan</li>
+                    <li onclick="DanhMuc()">Loại sản phẩm</li>
+                    <li onclick="SanPham()"> Sản phẩm</li>
+                    <li onclick="HoaDonBan()"> Hóa đơn bán</li>
+                </ul>
+            </div>
+
+            <div class="col-11 content">
+                <div class="col-12 main-content">
+                    <div class="tabcontent">
+                        <div class="title">
+                           <p> Hoạt động hôm nay</p>
+                            <hr>
+                        </div>  
+                        <div class="row">
+                            <div class="col-6 col-s-12 padding-box">
+                                <div class="box" style="background-color: #9abc32;">
+                                    <div class="box-left"><i class="fas fa-signal"></i></div>
+                                    <div class="box-right">Tiền bán hàng<br><span>12.500.000</span>đ</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-s-12 padding-box">
+                                <div class="box" style="background-color: #6FB3E0;">
+                                    <div class="box-left"><i class="fas fa-cloud"></i></div>
+                                    <div class="box-right">
+                                        Số đơn hàng: <span>6</span><br>
+                                        Số sản phẩm: <span>12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6 col-s-12 padding-box">
+                                <div class="box2" style="border: 1px solid #6FB3E0;">
+                                    <div class="box2-top" style="border-bottom: 1px solid #6FB3E0;">
+                                        <i class="fas fa-signal"></i> Hoạt động
+                                    </div>
+                                    <div class="box2-bot">
+                                        <div class="box2-bot-left">Tiền bán hàng</div>
+                                        <div class="box2-bot-right">12.500.000</div>
+                                        <div class="box2-bot-left">Số đơn hàng</div>
+                                        <div class="box2-bot-right">6</div>
+                                        <div class="box2-bot-left">Số sản phẩm</div>
+                                        <div class="box2-bot-right">12</div>
+                                        <div class="box2-bot-left">Khách trả hàng</div>
+                                        <div class="box2-bot-right">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-s-12 padding-box">
+                                <div class="box2" style="border: 1px solid #9abc32;">
+                                    <div class="box2-top" style="border-bottom: 1px solid #9abc32;">
+                                        <i class="fas fa-boxes"></i> Thông tin sản phẩm
+                                    </div>
+                                    <div class="box2-bot">
+                                        <div class="box2-bot-left">Tồn kho</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Hết hàng</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Sắp hết hàng</div>
+                                        <div class="box2-bot-right">0</div>
+                                        <div class="box2-bot-left">Vượt định mức</div>
+                                        <div class="box2-bot-right">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </main>
+</body>
+</html>

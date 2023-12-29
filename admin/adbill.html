@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Hóa Đơn Bán</title>
+    <link rel="stylesheet" href="/admin/assets/css/admain.css">
+    <script src="/javascript/clickswitch.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/7a3d8c217d.js"></script>
+</head>
+<body>
+    <header>
+        <a href="javascript:void(0)" class="icon" onclick="openmenu()">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <div class="box-user">
+            Xin chào, <span id="name">Admin</span> <i class="fa-solid fa-caret-down" style="color: #ffffff;"></i>
+            <div class="box-login" id="box-login">
+                <button onclick="TTTaiKhoan()"><i class="fa-solid fa-user" style="color: #ffffff;"></i> Tài khoản</button>
+                <button onclick="LogOut();"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Đăng xuất</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container row">
+            <div class="col-1 col-s-12 sidenav ">
+                <button onclick="TongQuan()"> Tổng Quan</button>
+                <button  onclick="DanhMuc()"> Danh Mục</button>
+                <button onclick="SanPham()">Sản Phẩm</button>
+                <button class="active" onclick="HoaDonBan()"> Hóa Đơn Bán</button>                                                                                      
+            </div>
+
+            <div class="sidenav-left" id="button-sidenav-left">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeBTN()"><i
+                        class="far fa-window-close"></i></a>
+                <ul>
+                    <li onclick="TongQuan()"> Tổng quan</li>
+                    <li onclick="DanhMuc()">Loại sản phẩm</li>
+                    <li onclick="SanPham()"> Sản phẩm</li>
+                    <li onclick="HoaDonBan()"> Hóa đơn bán</li>
+                </ul>
+            </div>
+            
+            <div class="col-11 content ">
+                <div class="col-6 main-input ">
+                    <div class="tab-input" >
+                        <div class="title">
+                            <p>Nhập thông tin hóa đơn bán</p>
+                            <hr>
+                        </div>
+        
+                        <div class="input-box row">
+                            <form>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Mã hóa đơn bán:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="text" id="mahd"
+                                        placeholder="Nhập mã hóa đơn...Tự động sinh nếu không nhập...">
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Khách hàng:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="text" id="khachhang" placeholder="Nhập Họ tên khách hàng ...">
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Số điện thoại:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="text" id="sdtkh" placeholder="Nhập số điện thoại...">
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Email:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="email" id="emailkh" placeholder="Nhập email...">
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Địa chỉ:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="tel" id="diachikh" placeholder="Nhập địa chỉ...">
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Tổng sản phẩm:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="number" id="tongsanpham" value="0" readonly>
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Tổng tiền:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <input type="number" id="tongtien" value="0" readonly>
+                                </div>
+                                <div class="col-12 col-s-12 text">
+                                    <label for="txtright">Ghi chú:</label>
+                                </div>
+                                <div class="col-12 col-s-12 text-box">
+                                    <textarea id="ghichu" cols="197" rows="4"
+                                        placeholder="Nhập ghi chú (không bắt buộc)..."></textarea>
+                                </div>
+                            </form>
+                           
+                            <hr>
+                            <button class="button-form" style="background-color: rgba(44, 140, 15, 0.8);"
+                                    onclick="ThemHDB()">Thêm Mới</button>
+                                <button class="button-form" style="background-color: rgba(227, 32, 21, 0.8);"
+                                    onclick="NhapMoi()">Nhập mới</button>
+                                <button class="button-form" style="background-color: rgba(14, 87, 224, 0.8);" id="buttonUpdate"
+                                    onclick="CapNhat()">Cập nhật thông tin</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 row">
+                    <div class="table-detailexport">
+                        <table class="table_chitiet">
+                            <tbody id="DSSanPham">
+                                <tr>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Ảnh sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Tổng giá</th>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+                        <hr>
+                        <button class="btn-form" id="AddSanPham"
+                            style="background-color: rgba(44, 140, 15, 0.8);">Thêm sản phẩm</button>
+                            <button class="btn-form" id="AddSanPham"
+                            style="background-color: 
+                            #0e57e0">Cập Nhật</button>  
+                            <button class="btn-form" id="AddSanPham"
+                            style="background-color: 
+                            #e32015">Xóa sản phẩm</button> 
+                    </div>
+                    
+                </div>
+
+        
+                <div class="col-12 main-list">
+                    <div class="tab-list">
+                        <div class="title">
+                            <p>Danh sách hóa đơn bán </p>
+                            <hr>
+                        </div>
+        
+                        <div class="searchbar row">
+                            <div class="col-10 searchbox">
+                                <input type="text" id="search-category" placeholder="Nhập mã, tên danh mục sản phẩm...">
+                            </div>
+                            <div class="col-2 searchbutton">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+            
+                        <div class="list row">
+                            <div class="col-12 list-category">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Mã HDB</th>
+                                            <th>Khách hàng</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Tổng sản phẩm</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listCategory">
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-12 box-result">
+                                <div class="box-sum">
+                                    <div class="box-left">
+                                        Số lượng hóa đơn: <span id="soluong">0</span>
+                                        <br>
+                                        Tổng tiền: <span id="tongtienhd">0</span><span>đ</span>
+                                    </div>
+                                    <div class="box-right">
+                                        <button><i class="fas fa-angle-left"></i></button>
+                                        <button>1</button>
+                                        <button>2</button>
+                                        <button>3</button>
+                                        <button>4</button>
+                                        <button><i class="fas fa-angle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</body>
+</html>
